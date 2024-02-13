@@ -40,6 +40,7 @@ jobs:
       - uses: zaibon/go-buildinfo@0.1.0
 
       - name: Print env
+        run: go version
 
   lint:
     name: lint
