@@ -34,6 +34,13 @@ jobs:
       - name: Build Docker image
         run: make docker-build
 
+  env-print:
+    runs-on: self-hosted
+    steps:
+      - uses: zaibon/go-buildinfo@0.1.0
+
+      - name: Print env
+
   lint:
     name: lint
     runs-on: self-hosted
