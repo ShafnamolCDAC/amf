@@ -50,6 +50,10 @@ jobs:
       
       - name: Build Docker image
         run: make docker-build
+
+      - name: Push Docker Image
+        run: docker push jayaramrcdac/amf:latest
+          
   
   lint:
     name: lint
