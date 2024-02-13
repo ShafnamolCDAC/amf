@@ -91,13 +91,12 @@ jobs:
       - name: Build Docker image
         run: make docker-build
 
-      - name: Tag Docker Image
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+      - name: Tag Docker image
         run: docker tag 5gc-amf:0.0.1-dev jayaramrcdac/amf
 
-      - name: Push Docker image to registry
-        uses: julioarruda/pushimagetoregistry@v1
-        with:
-          acr-tokenname: ${{ secrets.ACR_TOKEN_NAME }}  # Username Name with push permission
-          acr-token: ${{ secrets.ACR_TOKEN }}  # Token/PWD with push permission
-          acr-account: jayaramrcdac  # Docker Account Name
-          acr-imagename: amf  # Docker Image Name
+      - name: Push Docker image to Docker Hub
+        run: docker push jayaramrcdac/amf
+
