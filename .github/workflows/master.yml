@@ -52,7 +52,7 @@ jobs:
         run: make docker-build
 
       - name: Push Docker Image
-        run: docker push jayaramrcdac/amf:latest
+        run: docker tag latest jayaramrcdac/amf && docker push jayaramrcdac/amf
           
   
   lint:
