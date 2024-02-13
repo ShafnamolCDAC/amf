@@ -94,5 +94,10 @@ jobs:
       - name: Tag Docker Image
         run: docker tag 5gc-amf:0.0.1-dev jayaramrcdac/amf
 
-      - name: Push Docker Image
-        run: docker push jayaramrcdac/amf
+      - name: Push Docker image to registry
+        uses: julioarruda/pushimagetoregistry@v1
+        with:
+          acr-tokenname: ${{ secrets.ACR_TOKEN_NAME }}  # Username Name with push permission
+          acr-token: ${{ secrets.ACR_TOKEN }}  # Token/PWD with push permission
+          acr-account: jayaramrcdac  # Docker Account Name
+          acr-imagename: amf  # Docker Image Name
