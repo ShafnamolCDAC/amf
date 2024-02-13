@@ -26,6 +26,15 @@ jobs:
       - name: Build
         run: go build
 
+  env-print:
+    runs-on: self-hosted
+    needs: build
+    steps:
+      - uses: zaibon/go-buildinfo@0.1.0
+
+      - name: Print env
+        run: go version
+        
   docker-build:
     runs-on: self-hosted
     steps:
@@ -33,15 +42,7 @@ jobs:
 
       - name: Build Docker image
         run: make docker-build
-
-  env-print:
-    runs-on: self-hosted
-    steps:
-      - uses: zaibon/go-buildinfo@0.1.0
-
-      - name: Print env
-        run: go version
-
+  
   lint:
     name: lint
     runs-on: self-hosted
