@@ -35,6 +35,7 @@ var (
 	GinLog      *logrus.Entry
 	GrpcLog     *logrus.Entry
 	KafkaLog    *logrus.Entry
+	TestLog     *logrus.Entry
 )
 
 const (
@@ -77,6 +78,7 @@ func init() {
 	GinLog = log.WithFields(logrus.Fields{"component": "AMF", "category": "GIN"})
 	GrpcLog = log.WithFields(logrus.Fields{"component": "AMF", "category": "GRPC"})
 	KafkaLog = log.WithFields(logrus.Fields{"component": "AMF", "category": "Kafka"})
+	TestLog = log.WithFields(logrus.Fields{"component": "AMF", "category": "AMFTest"})
 }
 
 func SetLogLevel(level logrus.Level) {
