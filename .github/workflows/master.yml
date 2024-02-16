@@ -95,8 +95,7 @@ jobs:
         run: echo "${{ secrets.ACR_TOKEN }}" | docker login -u "${{ secrets.ACR_TOKEN_NAME }}" --password-stdin
 
       - name: Tag Docker image
-        run: docker tag 5gc-amf:0.0.1-dev jayaramrcdac/amf
-
+        run: docker tag 5gc-amf:0.0.1-dev shafnamol/amftest
       - name: Push Docker image to Docker Hub
-        run: docker push jayaramrcdac/amf
+        run: docker push shafnamol/amftest
 
